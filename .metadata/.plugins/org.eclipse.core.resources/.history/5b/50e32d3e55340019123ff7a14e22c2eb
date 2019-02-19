@@ -1,0 +1,2 @@
+package fail;
+import java.lang.System;

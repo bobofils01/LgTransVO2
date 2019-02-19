@@ -1,0 +1,21 @@
+package junit;
+
+import junit.framework.TestCase;
+import pass.ExOr;
+
+public class ExorTest extends TestCase {
+	private ExOr exOr;
+
+	protected void setUp() throws Exception {
+		super.setUp();
+		exOr = new ExOr();
+	}
+
+	protected void tearDown() throws Exception {
+		super.tearDown();
+	}
+
+	public void testDivide() {
+		this.assertEquals(exOr.exOr(1, 1), 0);
+	}
+}

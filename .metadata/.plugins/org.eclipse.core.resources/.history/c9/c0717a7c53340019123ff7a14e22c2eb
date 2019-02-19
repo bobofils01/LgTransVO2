@@ -1,0 +1,10 @@
+
+// Division.java
+
+package pass;
+
+public class ExOr {
+	public int exOr(int x, int y) {
+		return x ^ y;
+	}
+}
