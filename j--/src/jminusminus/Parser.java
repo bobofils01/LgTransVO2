@@ -988,6 +988,8 @@ public class Parser {
 			return new JAssignOp(line, lhs, assignmentExpression());
 		} else if (have(PLUS_ASSIGN)) {
 			return new JPlusAssignOp(line, lhs, assignmentExpression());
+		} else if (have(MINUS_ASSIGN)) {
+			return new JMinusAssignOp(line, lhs, assignmentExpression());
 		} else {
 			return lhs;
 		}
@@ -1089,8 +1091,8 @@ public class Parser {
 				lhs = new JSubtractOp(line, lhs, multiplicativeExpression());
 			} else if (have(PLUS)) {
 				lhs = new JPlusOp(line, lhs, multiplicativeExpression());
-			}else if (have(TokenKind.EXOR)) {
-				lhs = new JExOrOp(line, lhs, multiplicativeExpression());
+			}else if (have(XOR)) {
+				lhs = new JXorOp(line, lhs, multiplicativeExpression());
 			} else {
 				more = false;
 			}

@@ -148,7 +148,7 @@ class Scanner {
 			}
 		case '^':
 			nextCh();
-			return new TokenInfo(EXOR, line);
+			return new TokenInfo(XOR, line);
 		case '!':
 			nextCh();
 			return new TokenInfo(LNOT, line);
@@ -165,10 +165,13 @@ class Scanner {
 				return new TokenInfo(INC, line);
 			} else {
 				return new TokenInfo(PLUS, line);
-			}
+			}        
 		case '-':
 			nextCh();
-			if (ch == '-') {
+			if (ch == '=') {
+				nextCh();
+				return new TokenInfo(MINUS_ASSIGN, line);
+			} else if (ch == '-') {
 				nextCh();
 				return new TokenInfo(DEC, line);
 			} else {

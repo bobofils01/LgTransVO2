@@ -196,7 +196,7 @@ class JSubtractOp extends JBinaryExpression {
  * The AST node for a subtraction (-) expression.
  */
 
-class JExOrOp extends JBinaryExpression {
+class JXorOp extends JBinaryExpression {
 
 	/**
 	 * Construct an AST node for a subtraction expression given its line number, and
@@ -211,7 +211,7 @@ class JExOrOp extends JBinaryExpression {
 	 *            the rhs operand.
 	 */
 
-	public JExOrOp(int line, JExpression lhs, JExpression rhs) {
+	public JXorOp(int line, JExpression lhs, JExpression rhs) {
 		super(line, "^", lhs, rhs);
 	}
 
