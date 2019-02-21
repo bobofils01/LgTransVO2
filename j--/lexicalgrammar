@@ -46,7 +46,8 @@ PLUS        ::= "+"
 PLUS_ASSIGN ::= "+="
 STAR        ::= "*"
 DIV         ::= "/"
-EXOR        ::= "^"
+XOR        	::= "^"
+
 // Separators
 COMMA       ::= ","
 DOT         ::= "."
