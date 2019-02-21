@@ -13,6 +13,7 @@ public class XorTest extends TestCase {
 
 	protected void tearDown() throws Exception {
 		super.tearDown();
+		
 	}
 
 	public void testXor() {
