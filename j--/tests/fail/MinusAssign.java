@@ -4,7 +4,7 @@ import java.lang.System;
 
 public class MinusAssign {
 	public static void main(String[] args) {
-		System.out.println("jdj"+= 42);
-		
+		int a = 4;
+		a -= "st";
 	}
 } 

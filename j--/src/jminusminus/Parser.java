@@ -1011,7 +1011,10 @@ public class Parser {
 		boolean more = true;
 		JExpression lhs = equalityExpression();
 		while (more) {
-			if (have(LAND)) {
+			if (have(XOR)) {
+				lhs = new JXorOp(line, lhs, equalityExpression());
+			}
+			else if (have(LAND)) {
 				lhs = new JLogicalAndOp(line, lhs, equalityExpression());
 			} else {
 				more = false;
@@ -1019,6 +1022,7 @@ public class Parser {
 		}
 		return lhs;
 	}
+
 
 	/**
 	 * Parse an equality expression.
@@ -1091,8 +1095,6 @@ public class Parser {
 				lhs = new JSubtractOp(line, lhs, multiplicativeExpression());
 			} else if (have(PLUS)) {
 				lhs = new JPlusOp(line, lhs, multiplicativeExpression());
-			}else if (have(XOR)) {
-				lhs = new JXorOp(line, lhs, multiplicativeExpression());
 			} else {
 				more = false;
 			}
