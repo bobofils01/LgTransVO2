@@ -20,5 +20,9 @@ public class XorTest extends TestCase {
 		this.assertEquals(exOr.xor(1, 1), 0);
 		this.assertEquals(exOr.xor(0, 1), 1);
 		this.assertEquals(exOr.xor(0, 0), 0);
+		this.assertEquals(exOr.xor(4, 2), 6);
+		this.assertEquals(exOr.xor(7, 2), 5);
+		this.assertEquals(exOr.xor(1023, 1), 1022);
+		
 	}
 }
