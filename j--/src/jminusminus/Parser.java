@@ -999,8 +999,8 @@ public class Parser {
 	 * Parse a conditional-and expression.
 	 * 
 	 * <pre>
-	 *   conditionalAndExpression ::= equalityExpression // level 10
-	 *                                  {LAND equalityExpression}
+	 *   conditionalAndExpression ::= exclusiveOrExpression // level 10
+	 *                                  {LAND exclusiveOrExpression}
 	 * </pre>
 	 * 
 	 * @return an AST for a conditionalExpression.
@@ -1009,13 +1009,10 @@ public class Parser {
 	private JExpression conditionalAndExpression() {
 		int line = scanner.token().line();
 		boolean more = true;
-		JExpression lhs = equalityExpression();
+		JExpression lhs = exclusiveOrExpression();
 		while (more) {
-			if (have(XOR)) {
-				lhs = new JXorOp(line, lhs, equalityExpression());
-			}
-			else if (have(LAND)) {
-				lhs = new JLogicalAndOp(line, lhs, equalityExpression());
+			if (have(LAND)) {
+				lhs = new JLogicalAndOp(line, lhs, exclusiveOrExpression());
 			} else {
 				more = false;
 			}
@@ -1023,7 +1020,30 @@ public class Parser {
 		return lhs;
 	}
 
-
+	/**
+	 * Parse a exclusive-or expression.
+	 * 
+	 * <pre>
+	 *   exclusiveOrExpression ::= equalityExpression // level 8
+	 *                                  {XOR equalityExpression}
+	 * </pre>
+	 * 
+	 * @return an AST for a exclusiveOrExpression.
+	 */
+	private JExpression exclusiveOrExpression() {
+		int line = scanner.token().line();
+		boolean more = true;
+		JExpression lhs = equalityExpression();
+		while (more) {
+			if (have(XOR)) {
+				lhs = new JXorOp(line, lhs, equalityExpression());
+			} else {
+				more = false;
+			}
+		}
+		return lhs;
+	}
+	
 	/**
 	 * Parse an equality expression.
 	 * 
