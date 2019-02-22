@@ -7,6 +7,8 @@ public class Date {
 			"August", "September", "October", "November", "December" };
 
 	public String date(String d) {
+		if(!(d.length() == 10))
+			return null;
 		int year = Integer.parseInt(d.substring(0, 4));
 		if(!(d.charAt(4) == '-'))
 			return null;
